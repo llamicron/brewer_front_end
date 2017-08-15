@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "showOutput": "always",
+  "tasks": [
+    {
+      "taskName": "test",
+      "command": "pytest",
+      "showOutput": "always",
+      "isTestCommand": true,
+      "args": [
+        "tests/"
+      ]
+    }
+  ]
+}
