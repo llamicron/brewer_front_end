@@ -22,14 +22,72 @@
 
   <div class="container">
     <div class="columns">
-      <div class="column is-4">
-        <h1 class="title">Recipe section here</h1>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente velit quaerat, repellat, beatae in recusandae, distinctio inventore iure voluptas ipsam dolore ea obcaecati eos soluta. At error nemo beatae quam.
-      </div>
-      <div class="column is-6">
-        <h1 class="title">Procedure section here</h1>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus odit qui labore excepturi reiciendis, laudantium temporibus
-        et, vel. Pariatur unde odio, cumque distinctio ut amet ipsa porro debitis quidem eos.
+      <div class="column is-10 is-offset-1">
+        <h1 class="title">
+          <br>
+          New Recipe
+        </h1>
+        <!-- Create Recipe form -->
+        <form action="/create-recipe" method="POST">
+          <div class="box">
+            <!-- Name Field -->
+            <div class="field">
+              <label class="label">Recipe name</label>
+              <div class="control">
+                <input class="input" name="name" type="text" placeholder="Recipe Name">
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Grain Amount Number Field -->
+            <div class="field">
+              <label class="label">Grain Amount in Pounds</label>
+              <div class="control">
+                <input class="input" name="grain" type="number" placeholder="Grain Amount in Pounds">
+              </div>
+            </div>
+
+            <!-- Water Amount Number Field -->
+            <div class="field">
+              <label class="label">Water Amount in Quarts</label>
+              <div class="control">
+                <input class="input" name="water" type="number" placeholder="Water Amount in Quarts">
+              </div>
+            </div>
+
+            <!-- Grain Temp Number Field -->
+            <div class="field">
+              <label class="label">Grain Temperature</label>
+              <div class="control">
+                <input class="input" name="grain_temp" type="number" placeholder="Grain Temperature (f)">
+              </div>
+            </div>
+
+            <!-- Mash Time Number Field -->
+            <div class="field">
+              <label class="label">Mash Time</label>
+              <div class="control">
+                <input class="input" name="mash_time" type="number" placeholder="Mash Time in Minutes">
+              </div>
+            </div>
+
+            <!-- Mash Temp Number Field -->
+            <div class="field">
+              <label class="label">Mash Temperature</label>
+              <div class="control">
+                <input class="input" name="mash_temp" type="number" placeholder="Mash Temperature (f)">
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="button is-primary">
+              Submit
+            </button>
+
+
+          </div>
+        </form>
       </div>
     </div>
   </div>
