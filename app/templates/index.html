@@ -46,12 +46,22 @@
         {% for recipe in recipes %}
           <div class="box" v-if="selected == {{ recipe.id }}">
             <h1 class="title">{{ recipe.name }}</h1>
-            <ul>
-              <li>Water: {{ recipe.name }}</li>
-              <li>Grain: {{ recipe.grain }}</li>
-            </ul>
+            <div class="columns">
+              <div class="column">
+                <ul>
+                  <li>Water: {{ recipe.water }}</li>
+                  <li>Grain: {{ recipe.grain }}</li>
+                  <li>Mash Temperature: {{ recipe.mash_temp }} F</li>
+                  <li>Mash Duration: {{ recipe.mash_time }} minutes</li>
+                </ul>
+              </div>
+              <div class="column">
+                {{ recipe.description }}
+              </div>
+            </div>
           </div>
         {% endfor %}
+
         <!-- Create New Recipe  -->
         <div id="create-recipe" v-if="selected == 'create'">
           <h1 class="title">
@@ -111,11 +121,19 @@
                 </div>
               </div>
 
+              <!-- Description Text Area -->
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea class="textarea" name="description" placeholder="Description"></textarea>
+                </div>
+              </div>
+
+
               <!-- Submit -->
               <button type="submit" class="button is-primary">
                 Submit
               </button>
-
 
             </div>
           </form>

@@ -48,7 +48,8 @@ def hand_create_recipe_post():
         grain_temp = request.form['grain_temp'],
         water = request.form['water'],
         mash_temp = request.form['mash_temp'],
-        mash_time = request.form['mash_time']
+        mash_time = request.form['mash_time'],
+        description = request.form['description']
     )
     recipe.save()
     return redirect("/")
