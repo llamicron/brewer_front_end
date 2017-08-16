@@ -3,8 +3,9 @@
 <head>
   <title>Brewer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
-  <link href="https: //fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
 </head>
 
 <body>
@@ -26,16 +27,32 @@
       <div id="recipe" class="column is-10 is-offset-1">
 
         <br>
-        <h2 class="subtitle">Load a recipe</h2>
+        <h1 class="title">
+          Load a recipe
+        </h1>
+        <hr>
         <div class="select">
           <select v-model="selected">
-            <option>Load this</option>
-            <option>Load this</option>
-            <option>Load this</option>
+            {% if recipes %}
+              {% for recipe in recipes %}
+                <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+              {% endfor %}
+            {% endif %}
             <option value="create">Create new recipe...</option>
           </select>
         </div>
 
+        <!-- Show Selected Recipe -->
+        {% for recipe in recipes %}
+          <div class="box" v-if="selected == {{ recipe.id }}">
+            <h1 class="title">{{ recipe.name }}</h1>
+            <ul>
+              <li>Water: {{ recipe.name }}</li>
+              <li>Grain: {{ recipe.grain }}</li>
+            </ul>
+          </div>
+        {% endfor %}
+        <!-- Create New Recipe  -->
         <div id="create-recipe" v-if="selected == 'create'">
           <h1 class="title">
             <br>
@@ -106,16 +123,20 @@
       </div>
     </div>
   </div>
-</body
+
+  <script src="{{ url_for("static", filename="main.js") }}"></script>
+  <script>
+    var recipe = new Vue({
+        el: "#recipe",
+        delimiters: ["[[", "]]"],
+        data: {
+          selected: '',
+        }
+      })
+  </script>
+
+</body>
 
 </html>
 
-<script>
-  var recipe = new Vue({
-    el: "#recipe",
 
-    data: {
-      selected: ''
-    }
-  })
-</script>

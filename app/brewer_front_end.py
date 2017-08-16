@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from peewee import *
 from models.recipe import Recipe
+import json
 import os
 
 db_path = os.path.expanduser("~") + "/.brewer.db"
@@ -31,7 +32,8 @@ def form_missing_field(form):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    recipes = Recipe.select()
+    return render_template("index.html", recipes=recipes)
 
 
 @app.route("/create-recipe", methods=['POST'])
@@ -54,4 +56,4 @@ def hand_create_recipe_post():
 
 if __name__ == '__main__':
     Recipe.create_table(True)
-    app.run()
+    app.run(extra_files="static/main.js")

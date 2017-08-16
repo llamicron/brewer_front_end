@@ -4,4 +4,42 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-brewer_front_end.py	../brewer_front_end/views/brewer_front_end.py	1;"	kind:file	line:1
+BrewerFrontEndTestCase	../tests/test_brewer_front_end.py	/^class BrewerFrontEndTestCase(unittest.TestCase):$/;"	kind:class	line:4
+Flask	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect$/;"	kind:namespace	line:1
+Meta	../app/models/recipe.py	/^    class Meta:$/;"	kind:class	line:14
+Recipe	../app/brewer_front_end.py	/^from models.recipe import Recipe$/;"	kind:namespace	line:3
+Recipe	../app/models/recipe.py	/^class Recipe(Model):$/;"	kind:class	line:6
+RecipeTestCase	../tests/test_recipe.py	/^class RecipeTestCase(unittest.TestCase):$/;"	kind:class	line:3
+__init__.py	../app/__init__.py	1;"	kind:file	line:1
+__init__.py	../app/models/__init__.py	1;"	kind:file	line:1
+__init__.py	../tests/__init__.py	1;"	kind:file	line:1
+_db_close	../app/brewer_front_end.py	/^def _db_close(exc):$/;"	kind:function	line:18
+_db_connect	../app/brewer_front_end.py	/^def _db_connect():$/;"	kind:function	line:13
+app	../app/brewer_front_end.py	/^app = Flask(__name__)$/;"	kind:variable	line:8
+brewer_front_end	../tests/test_brewer_front_end.py	/^from app import brewer_front_end$/;"	kind:namespace	line:2
+brewer_front_end.py	../app/brewer_front_end.py	1;"	kind:file	line:1
+database	../app/models/recipe.py	/^        database = db$/;"	kind:variable	line:15
+db	../app/brewer_front_end.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:9
+db	../app/models/recipe.py	/^db = SqliteDatabase(os.path.expanduser("~") + "\/.brewer.db")$/;"	kind:variable	line:4
+db_path	../app/brewer_front_end.py	/^db_path = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:6
+form_missing_field	../app/brewer_front_end.py	/^def form_missing_field(form):$/;"	kind:function	line:23
+grain	../app/models/recipe.py	/^    grain      = FloatField()$/;"	kind:variable	line:8
+grain_temp	../app/models/recipe.py	/^    grain_temp = FloatField()$/;"	kind:variable	line:9
+hand_create_recipe_post	../app/brewer_front_end.py	/^def hand_create_recipe_post():$/;"	kind:function	line:38
+index	../app/brewer_front_end.py	/^def index():$/;"	kind:function	line:33
+mash_temp	../app/models/recipe.py	/^    mash_temp  = FloatField()$/;"	kind:variable	line:11
+mash_time	../app/models/recipe.py	/^    mash_time  = FloatField()$/;"	kind:variable	line:12
+name	../app/models/recipe.py	/^    name       = CharField()$/;"	kind:variable	line:7
+os	../app/brewer_front_end.py	/^import os$/;"	kind:namespace	line:4
+os	../app/models/recipe.py	/^import os$/;"	kind:namespace	line:2
+recipe	../tests/test_recipe.py	/^from app.models import recipe$/;"	kind:namespace	line:1
+recipe.py	../app/models/recipe.py	1;"	kind:file	line:1
+redirect	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect$/;"	kind:namespace	line:1
+render_template	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect$/;"	kind:namespace	line:1
+request	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect$/;"	kind:namespace	line:1
+setUp	../tests/test_recipe.py	/^    def setUp(self):$/;"	kind:member	line:4
+test_brewer_front_end.py	../tests/test_brewer_front_end.py	1;"	kind:file	line:1
+test_is_true	../tests/test_brewer_front_end.py	/^    def test_is_true(self):$/;"	kind:member	line:6
+test_recipe.py	../tests/test_recipe.py	1;"	kind:file	line:1
+unittest	../tests/test_brewer_front_end.py	/^import unittest$/;"	kind:namespace	line:1
+water	../app/models/recipe.py	/^    water      = FloatField()$/;"	kind:variable	line:10
