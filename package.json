@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "formBuilder": "^2.5.3"
+  },
+  "scripts": {
+    "customInstall": "yarn install --modules-folder ./app/static/node_modules"
+  },
+  "license": "MIT"
+}

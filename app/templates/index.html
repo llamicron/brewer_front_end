@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
 
   <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="{{ url_for("static", filename="node_modules/jquery/dist/jquery.js") }}"></script>
+  <script src="{{ url_for("static", filename="node_modules/jquery-ui-sortable/jquery-ui.min.js") }}"></script>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -163,34 +164,8 @@
   <!-- Main Procedure -->
   <div class="container">
     <div class="columns">
-      <div class="column">
-        <!-- Element Picker -->
-        <nav class="panel">
-          <!-- Element Box Title -->
-          <p class="panel-heading">
-            Elements
-          </p>
-          <!-- Element Box Search Bar -->
-          <div class="panel-block">
-            <p class="control has-icons-left">
-              <input class="input is-small" type="text" placeholder="search">
-              <span class="icon is-small is-left">
-                <i class="fa fa-search"></i>
-              </span>
-            </p>
-          </div>
-          <!-- Panel Blocks -->
-          <a class="panel-block">
-            <span class="panel-icon">
-              <i class="fa fa-book"></i>
-            </span>
-            bulma
-          </a>
-        </nav>
-      </div>
-
       <!-- Procedure Builder -->
-      <div class="column is-8">
+      <div class="column is-10 is-offset-1">
         <div class="box" id="procedure-builder">
           <form action="/create-procedure" method="post">
 
@@ -202,6 +177,8 @@
               </div>
             </div>
 
+            <div class="build-wrap"></div>
+
           </form>
         </div>
 
@@ -211,6 +188,8 @@
 
   <script src="{{ url_for("static", filename="main.js") }}"></script>
   <script src="{{ url_for("static", filename="forms.js") }}"></script>
+  <script src="{{ url_for("static", filename="node_modules/formBuilder/dist/form-builder.min.js") }}"></script>
+  <script src="{{ url_for("static", filename="node_modules/formBuilder/dist/form-render.min.js") }}"></script>
 
 </body>
 
