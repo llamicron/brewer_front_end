@@ -2,15 +2,25 @@
 
 <head>
   <title>Brewer</title>
+  <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
+
+  <!-- Raleway Font -->
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+  <!-- Vue.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
   <!-- Header Hero -->
-  <section class="hero is-primary">
+  <section id="header" class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <div class="columns">
@@ -22,35 +32,18 @@
               A decent looking interface
             </h2>
           </div>
-          <div class="column is-4">
-            <div class="box">
-              <div class="has-text-right">
-                <strong>
-                  {% for recipe in recipes %}
-                  <p v-if="location == {{ recipe.id }}">
-                    Loaded Recipe:
-                    {{ recipe.name }}
-                  </p>
-                  {% endfor %}
-                </strong>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Body -->
+  <!-- Main Recipe -->
   <div class="container">
     <div class="columns">
       <div id="body" class="column is-10 is-offset-1">
-
         <br>
-        <h1 class="title">
-          Load a recipe
-        </h1>
-        <hr>
+        <h2 class="subtitle">Select a recipe</h2>
+        <!-- Load Recipe Select Box -->
         <div class="select">
           <select v-model="selected">
             {% if recipes %}
@@ -89,7 +82,7 @@
             New Recipe
           </h1>
           <!-- Create Recipe form -->
-          <form action="/create-recipe" method="POST">
+          <form action="/create-recipe" id="create-recipe-form" method="POST">
             <div class="box">
               <!-- Name Field -->
               <div class="field">
@@ -162,7 +155,60 @@
     </div>
   </div>
 
+  <hr>
+
+  <!-- Main Procedure -->
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <!-- Element Picker -->
+        <nav class="panel">
+          <!-- Element Box Title -->
+          <p class="panel-heading">
+            Elements
+          </p>
+          <!-- Element Box Search Bar -->
+          <div class="panel-block">
+            <p class="control has-icons-left">
+              <input class="input is-small" type="text" placeholder="search">
+              <span class="icon is-small is-left">
+                <i class="fa fa-search"></i>
+              </span>
+            </p>
+          </div>
+          <!-- Panel Blocks -->
+          <a class="panel-block">
+            <span class="panel-icon">
+              <i class="fa fa-book"></i>
+            </span>
+            bulma
+          </a>
+        </nav>
+      </div>
+
+      <!-- Procedure Builder -->
+      <div class="column is-8">
+        <div class="box" id="procedure-builder">
+          <form action="/create-procedure" method="post">
+
+            <!-- Name Text Field -->
+            <div class="field">
+              <label class="label">Procedure Name</label>
+              <div class="control">
+                <input class="input" name="name" type="text" placeholder="Procedure Name">
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
   <script src="{{ url_for("static", filename="main.js") }}"></script>
+
 
 </body>
 

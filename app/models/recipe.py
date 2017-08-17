@@ -1,7 +1,7 @@
 from peewee import *
-import os
+import settings
 
-db = SqliteDatabase(os.path.expanduser("~") + "/.brewer.db")
+db = SqliteDatabase(settings.db_file)
 
 class Recipe(Model):
     name        = CharField()

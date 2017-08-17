@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from peewee import *
 from models.recipe import Recipe
 import json
@@ -8,6 +8,8 @@ db_path = os.path.expanduser("~") + "/.brewer.db"
 
 app = Flask(__name__)
 db = SqliteDatabase(db_path)
+
+app.secret_key = "9aD@nZ6-N9e$NZ[32\oXs4_H42"
 
 
 @app.before_request
@@ -39,17 +41,17 @@ def index():
 @app.route("/create-recipe", methods=['POST'])
 def hand_create_recipe_post():
     if form_missing_field(request.form):
-        # Set error message
+        # TODO: Set error message
         return redirect("/")
     # Store recipe
     recipe = Recipe.create(
         name=request.form['name'],
         grain=request.form['grain'],
-        grain_temp = request.form['grain_temp'],
-        water = request.form['water'],
-        mash_temp = request.form['mash_temp'],
-        mash_time = request.form['mash_time'],
-        description = request.form['description']
+        grain_temp=request.form['grain_temp'],
+        water=request.form['water'],
+        mash_temp=request.form['mash_temp'],
+        mash_time=request.form['mash_time'],
+        description=request.form['description']
     )
     recipe.save()
     return redirect("/")
@@ -68,7 +70,6 @@ def dated_url_for(endpoint, **values):
                                      endpoint, filename)
             values['q'] = int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
-
 
 
 if __name__ == '__main__':
