@@ -9,22 +9,42 @@
 </head>
 
 <body>
+  <!-- Header Hero -->
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">
-          Brewer
-        </h1>
-        <h2 class="subtitle">
-          A decent looking interface
-        </h2>
+        <div class="columns">
+          <div class="column">
+            <h1 class="title">
+              Brewer
+            </h1>
+            <h2 class="subtitle">
+              A decent looking interface
+            </h2>
+          </div>
+          <div class="column is-4">
+            <div class="box">
+              <div class="has-text-right">
+                <strong>
+                  {% for recipe in recipes %}
+                  <p v-if="location == {{ recipe.id }}">
+                    Loaded Recipe:
+                    {{ recipe.name }}
+                  </p>
+                  {% endfor %}
+                </strong>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Body -->
   <div class="container">
     <div class="columns">
-      <div id="recipe" class="column is-10 is-offset-1">
+      <div id="body" class="column is-10 is-offset-1">
 
         <br>
         <h1 class="title">
@@ -44,7 +64,7 @@
 
         <!-- Show Selected Recipe -->
         {% for recipe in recipes %}
-          <div class="box" v-if="selected == {{ recipe.id }}">
+          <div class="box" id="recipe" v-if="selected == {{ recipe.id }}">
             <h1 class="title">{{ recipe.name }}</h1>
             <div class="columns">
               <div class="column">
@@ -143,15 +163,6 @@
   </div>
 
   <script src="{{ url_for("static", filename="main.js") }}"></script>
-  <script>
-    var recipe = new Vue({
-        el: "#recipe",
-        delimiters: ["[[", "]]"],
-        data: {
-          selected: '',
-        }
-      })
-  </script>
 
 </body>
 
