@@ -1,1 +1,4 @@
-{}
+{
+  "tests/test_brewer_front_end.py": true, 
+  "tests/test_recipe.py": true
+}

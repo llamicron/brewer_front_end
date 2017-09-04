@@ -1,7 +1,7 @@
 from peewee import *
-from .. import settings
+from settings import db_file
 
-db = SqliteDatabase(settings.db_file)
+db = SqliteDatabase(db_file)
 
 class Recipe(Model):
     name        = CharField()

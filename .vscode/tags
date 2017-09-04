@@ -12,6 +12,7 @@ Procedure	../app/models/procedure.py	/^class Procedure(Model):$/;"	kind:class	li
 Recipe	../app/brewer_front_end.py	/^from models.recipe import Recipe$/;"	kind:namespace	line:3
 Recipe	../app/models/recipe.py	/^class Recipe(Model):$/;"	kind:class	line:6
 RecipeTestCase	../tests/test_recipe.py	/^class RecipeTestCase(unittest.TestCase):$/;"	kind:class	line:3
+__init__.py	../__init__.py	1;"	kind:file	line:1
 __init__.py	../app/__init__.py	1;"	kind:file	line:1
 __init__.py	../app/models/__init__.py	1;"	kind:file	line:1
 __init__.py	../tests/__init__.py	1;"	kind:file	line:1
@@ -24,9 +25,11 @@ database	../app/models/procedure.py	/^        database = db$/;"	kind:variable	li
 database	../app/models/recipe.py	/^        database = db$/;"	kind:variable	line:16
 dated_url_for	../app/brewer_front_end.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:65
 db	../app/brewer_front_end.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:10
-db	../app/models/procedure.py	/^db = SqliteDatabase(settings.db_file)$/;"	kind:variable	line:4
-db	../app/models/recipe.py	/^db = SqliteDatabase(settings.db_file)$/;"	kind:variable	line:4
-db_file	../app/settings.py	/^db_file = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:3
+db	../app/models/procedure.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
+db	../app/models/recipe.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
+db_file	../app/models/procedure.py	/^from settings import db_file$/;"	kind:namespace	line:2
+db_file	../app/models/recipe.py	/^from settings import db_file$/;"	kind:namespace	line:2
+db_file	../app/models/settings.py	/^db_file = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:3
 db_path	../app/brewer_front_end.py	/^db_path = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:7
 description	../app/models/recipe.py	/^    description = CharField()$/;"	kind:variable	line:13
 form_missing_field	../app/brewer_front_end.py	/^def form_missing_field(form):$/;"	kind:function	line:26
@@ -40,7 +43,7 @@ mash_time	../app/models/recipe.py	/^    mash_time   = FloatField()$/;"	kind:vari
 name	../app/models/procedure.py	/^    name = CharField()$/;"	kind:variable	line:7
 name	../app/models/recipe.py	/^    name        = CharField()$/;"	kind:variable	line:7
 os	../app/brewer_front_end.py	/^import os$/;"	kind:namespace	line:5
-os	../app/settings.py	/^import os$/;"	kind:namespace	line:1
+os	../app/models/settings.py	/^import os$/;"	kind:namespace	line:1
 override_url_for	../app/brewer_front_end.py	/^def override_url_for():$/;"	kind:function	line:61
 procedure.py	../app/models/procedure.py	1;"	kind:file	line:1
 recipe	../tests/test_recipe.py	/^from app.models import recipe$/;"	kind:namespace	line:1
@@ -50,9 +53,7 @@ render_template	../app/brewer_front_end.py	/^from flask import Flask, render_tem
 request	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 session	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 setUp	../tests/test_recipe.py	/^    def setUp(self):$/;"	kind:member	line:4
-settings	../app/models/procedure.py	/^import settings$/;"	kind:namespace	line:2
-settings	../app/models/recipe.py	/^import settings$/;"	kind:namespace	line:2
-settings.py	../app/settings.py	1;"	kind:file	line:1
+settings.py	../app/models/settings.py	1;"	kind:file	line:1
 test_brewer_front_end.py	../tests/test_brewer_front_end.py	1;"	kind:file	line:1
 test_is_true	../tests/test_brewer_front_end.py	/^    def test_is_true(self):$/;"	kind:member	line:6
 test_recipe.py	../tests/test_recipe.py	1;"	kind:file	line:1
