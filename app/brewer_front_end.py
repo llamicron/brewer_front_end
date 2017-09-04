@@ -74,4 +74,4 @@ def dated_url_for(endpoint, **values):
 
 if __name__ == '__main__':
     Recipe.create_table(True)
-    app.run(extra_files="static/main.js")
+    app.run(host='0.0.0.0', port="8000", extra_files="static/main.js")

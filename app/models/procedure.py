@@ -1,5 +1,5 @@
 from peewee import *
-import settings
+from .. import settings
 
 db = SqliteDatabase(settings.db_file)
 
