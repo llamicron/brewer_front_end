@@ -52,6 +52,10 @@ def index():
 
 @app.route("/controller")
 def controller():
+    return render_template("controller.html")
+
+@app.route("/relays", methods=["GET"])
+def relays():
     relays = [
         {
             "name": "hlt",
@@ -75,8 +79,12 @@ def controller():
         }
     ]
 
+    return json.dumps(relays)
+
+@app.route("/pid", methods=["GET"])
+def pid():
     pid = con.pid_status()
-    return render_template("controller.html", relays=relays, pid=pid)
+    return json.dumps(pid)
 
 # r/badcode
 def toggleRelay(name, state):

@@ -38,21 +38,10 @@
                   <h1 class="title">Relays</h1>
                 </div>
                 <hr>
-                <!-- Old button with Vue built in for future reference -->
-                <!-- <button :class="{ 'button is-primary': selected }">Test</button> -->
-                (% for relay in relays %) (% if relay['status'] %)
-                <a href="#" @click="toggleRelay" id="(( relay['name'] ))-button" class="relay-button button is-info">
-                      (( relay['prettyName'] ))
-                    </a>
-                <br> (% else %)
-                <!-- toggleRelay( (( relay['name'] )), (( relay['status'] )) ) -->
-                <a href="#" @click="toggleRelay" id="(( relay['name'] ))-button" class="relay-button button">
-                      (( relay['prettyName'] ))
-                    </a>
-                <br> (% endif %) (% endfor %)
-                <hr> (% if pid['is_running'] %)
-                <a href="#" class="relay-button button is-danger">RIMS</a> (% else %)
-                <a href="#" class="relay-button button">RIMS</a> (% endif %)
+                <a href="#" class="button relay-button" v-for="relay in relays" :class="{ 'is-info': relay['status'] }" >{{ relay['prettyName'] }}</a>
+
+                <hr>
+                <a href="#" :class="{ 'is-danger': pid['pid_running'] }" class="relay-button button">RIMS</a>
               </div>
 
               <div class="column is-9">
@@ -66,7 +55,7 @@
                     <div class="tile is-parent">
                       <article class="tile is-child notification is-danger" id="sv-tile">
                         <div class="content">
-                          <p class="title">Setpoint Value (( pid["sv"] )) ℉</p>
+                          <p class="title">Setpoint Value {{ pid['sv'] }} ℉</p>
                         </div>
                       </article>
                     </div>
@@ -78,7 +67,7 @@
                           <!-- SV Text field -->
                           <div class="field">
                             <div class="control">
-                              <input class="input" pattern="[0-9].+" name="sv" value="(( pid['sv'] ))" type="text" placeholder="This should be a number">
+                              <input class="input" pattern="[0-9].+" name="sv" type="text" placeholder="This should be a number">
                             </div>
                           </div>
                         </div>
@@ -96,7 +85,7 @@
                     <div class="tile is-parent">
                       <article class="tile is-child notification is-danger">
                         <div class="content">
-                          <p class="title">Process Value (( pid['pv'] )) ℉</p>
+                          <p class="title">Process Value {{ pid['pv'] }} ℉</p>
                         </div>
                       </article>
                     </div>
@@ -114,4 +103,4 @@
 </body>
 
 </html>
-<script src="(( url_for("static", filename="main.js") ))"></script>
+<script src="(( url_for("static", filename="controller.js") ))"></script>

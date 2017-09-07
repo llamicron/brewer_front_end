@@ -6,24 +6,6 @@
 //   }
 // })
 
-var controller = new Vue({
-  el: "#controller",
-  methods: {
-    toggleRelay(event) {
-      // r/badcode
-      axios.post('/toggleRelay', {
-        relayName: event.srcElement.id.replace("-button", ''),
-        status: event.srcElement.classList.toString().includes("is-info")
-      })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
-  }
-})
 
 $("#something").click(function(e) {
   e.preventDefault();
