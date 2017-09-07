@@ -38,7 +38,10 @@
                   <h1 class="title">Relays</h1>
                 </div>
                 <hr>
-                <a href="#" class="button relay-button" v-for="relay in relays" :class="{ 'is-info': relay['status'] }" >{{ relay['prettyName'] }}</a>
+
+                <!-- Relay Buttons -->
+                <!-- Setting to name to the status becuase i can't get the value from Vue -->
+                <a class="button relay-button" :id="relay['name']" :name="relay['status']" v-for="relay in relays" @click="setRelay" :class="{ 'is-info': relay['status'] }" >{{ relay['prettyName'] }}</a>
 
                 <hr>
                 <a href="#" :class="{ 'is-danger': pid['pid_running'] }" class="relay-button button">RIMS</a>

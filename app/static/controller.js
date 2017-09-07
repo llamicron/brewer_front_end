@@ -10,6 +10,20 @@ var controller = new Vue({
     loadData() {
       axios.get("/relays").then(response => this.relays = response.data);
       axios.get("/pid").then(response => this.pid = response.data);
+    },
+
+    setRelay() {
+      // State is set to name field since js is retarded
+      axios.post('/setRelay', {
+        relayName: event.srcElement.id,
+        state: event.srcElement.name
+      })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   },
 

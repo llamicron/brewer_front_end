@@ -43,7 +43,7 @@ def form_missing_field(form):
     return False
 
 
-# Routes
+# Routes ---------------------------------------------------
 
 @app.route("/")
 def index():
@@ -54,6 +54,73 @@ def index():
 def controller():
     return render_template("controller.html")
 
+
+@app.route("/create-recipe", methods=['POST'])
+def hand_create_recipe_post():
+    if form_missing_field(request.form):
+        # TODO: Set error message
+        return redirect("/")
+    # Store recipe
+    recipe = Recipe.create(
+        name=request.form['name'],
+        grain=request.form['grain'],
+        grain_temp=request.form['grain_temp'],
+        water=request.form['water'],
+        mash_temp=request.form['mash_temp'],
+        mash_time=request.form['mash_time'],
+        description=request.form['description']
+    )
+    recipe.save()
+    return redirect("/")
+
+# r/badcode
+@app.route("/setRelay", methods=["POST"])
+def set_relay():
+    relay = request.get_json()
+
+    if relay['state']:
+        relay['state'] = 1
+    else:
+        relay['state'] = 0
+
+    if relay['relayName'] == "hlt":
+        con.hlt(relay['state'])
+        print("HLT switched")
+    elif relay['relayName'] == "pump":
+        print("pump switched")
+        con.pump(relay['state'])
+
+    if relay['state'] == 1:
+        relay['state'] = "mash"
+    else:
+        relay['state'] = "boil"
+
+    if relay['relayName'] == "rimsToMash":
+        con.rims_to(relay['state'])
+        print("rims_to switched")
+    elif relay['relayName'] == "hltToMash":
+        print("hlt_to switched")
+        con.hlt_to(relay['state'])
+
+    return "True"
+
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+
+def dated_url_for(endpoint, **values):
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = os.path.join(app.root_path,
+                                     endpoint, filename)
+            values['q'] = int(os.stat(file_path).st_mtime)
+    return url_for(endpoint, **values)
+
+
+# API ------------------------------------------------------
+# Relay API Resource
 @app.route("/relays", methods=["GET"])
 def relays():
     relays = [
@@ -81,82 +148,11 @@ def relays():
 
     return json.dumps(relays)
 
+# PID API Resource
 @app.route("/pid", methods=["GET"])
 def pid():
     pid = con.pid_status()
     return json.dumps(pid)
-
-# r/badcode
-def toggleRelay(name, state):
-    if name == "hlt":
-        if state == "True":
-            con.hlt(1)
-        else:
-            con.hlt(0)
-
-    if name == "pump":
-        if state == "True":
-            con.pump(0)
-        else:
-            con.pump(1)
-
-    # TODO: Maybe invert this?
-    if name == "rimsToMash":
-        if state == "True":
-            con.rims_to("boil")
-        else:
-            con.rims_to("mash")
-
-    if name == "hltToMash":
-        if state == "True":
-            con.hlt_to("boil")
-        else:
-            con.hlt_to("mash")
-
-    return True
-
-@app.route("/toggleRelay", methods=["POST"])
-def handleToggleRelayPost():
-    toggleRelay(request.get_json()['relayName'], request.get_json()['status'])
-    return "True"
-
-@app.route("/create-recipe", methods=['POST'])
-def hand_create_recipe_post():
-    if form_missing_field(request.form):
-        # TODO: Set error message
-        return redirect("/")
-    # Store recipe
-    recipe = Recipe.create(
-        name=request.form['name'],
-        grain=request.form['grain'],
-        grain_temp=request.form['grain_temp'],
-        water=request.form['water'],
-        mash_temp=request.form['mash_temp'],
-        mash_time=request.form['mash_time'],
-        description=request.form['description']
-    )
-    recipe.save()
-    return redirect("/")
-
-@app.route('/post', methods=["POST"])
-def accept_post():
-    print(request.form)
-    return render_template("controller.html")
-
-
-@app.context_processor
-def override_url_for():
-    return dict(url_for=dated_url_for)
-
-
-def dated_url_for(endpoint, **values):
-    if endpoint == 'static':
-        filename = values.get('filename', None)
-        if filename:
-            file_path = os.path.join(app.root_path,
-                                     endpoint, filename)
-            values['q'] = int(os.stat(file_path).st_mtime)
-    return url_for(endpoint, **values)
 
 
 if __name__ == '__main__':

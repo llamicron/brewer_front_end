@@ -20,7 +20,6 @@ __init__.py	../app/models/__init__.py	1;"	kind:file	line:1
 __init__.py	../tests/__init__.py	1;"	kind:file	line:1
 _db_close	../app/weber.py	/^def _db_close(exc):$/;"	kind:function	line:34
 _db_connect	../app/weber.py	/^def _db_connect():$/;"	kind:function	line:29
-accept_post	../app/weber.py	/^def accept_post():$/;"	kind:function	line:159
 app	../app/weber.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:22
 block_end_string	../app/weber.py	/^    block_end_string='%)',$/;"	kind:variable	line:15
 block_start_string	../app/weber.py	/^    block_start_string='(%',$/;"	kind:variable	line:14
@@ -30,7 +29,7 @@ con	../app/weber.py	/^con = Controller()$/;"	kind:variable	line:9
 controller	../app/weber.py	/^def controller():$/;"	kind:function	line:54
 database	../app/models/procedure.py	/^        database = db$/;"	kind:variable	line:11
 database	../app/models/recipe.py	/^        database = db$/;"	kind:variable	line:16
-dated_url_for	../app/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:169
+dated_url_for	../app/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:91
 db	../app/models/procedure.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
 db	../app/models/recipe.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
 db	../app/weber.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:23
@@ -42,8 +41,7 @@ description	../app/models/recipe.py	/^    description = CharField()$/;"	kind:var
 form_missing_field	../app/weber.py	/^def form_missing_field(form):$/;"	kind:function	line:39
 grain	../app/models/recipe.py	/^    grain       = FloatField()$/;"	kind:variable	line:8
 grain_temp	../app/models/recipe.py	/^    grain_temp  = FloatField()$/;"	kind:variable	line:9
-hand_create_recipe_post	../app/weber.py	/^def hand_create_recipe_post():$/;"	kind:function	line:141
-handleToggleRelayPost	../app/weber.py	/^def handleToggleRelayPost():$/;"	kind:function	line:136
+hand_create_recipe_post	../app/weber.py	/^def hand_create_recipe_post():$/;"	kind:function	line:59
 index	../app/weber.py	/^def index():$/;"	kind:function	line:49
 jinja_options	../app/weber.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:12
 json	../app/weber.py	/^import json$/;"	kind:namespace	line:4
@@ -53,21 +51,23 @@ name	../app/models/procedure.py	/^    name = CharField()$/;"	kind:variable	line:
 name	../app/models/recipe.py	/^    name        = CharField()$/;"	kind:variable	line:7
 os	../app/models/settings.py	/^import os$/;"	kind:namespace	line:1
 os	../app/weber.py	/^import os$/;"	kind:namespace	line:6
-override_url_for	../app/weber.py	/^def override_url_for():$/;"	kind:function	line:165
+override_url_for	../app/weber.py	/^def override_url_for():$/;"	kind:function	line:87
+pid	../app/weber.py	/^def pid():$/;"	kind:function	line:132
 procedure.py	../app/models/procedure.py	1;"	kind:file	line:1
 recipe	../tests/test_recipe.py	/^from app.models import recipe$/;"	kind:namespace	line:1
 recipe.py	../app/models/recipe.py	1;"	kind:file	line:1
 redirect	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-relays	../app/weber.py	/^def relays():$/;"	kind:function	line:82
+relays	../app/weber.py	/^def relays():$/;"	kind:function	line:104
 render_template	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 request	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 session	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 setUp	../tests/test_recipe.py	/^    def setUp(self):$/;"	kind:member	line:4
+set_relay	../app/weber.py	/^def set_relay():$/;"	kind:function	line:81
+set_relay	../app/weber.py	/^def set_relay(name, state):$/;"	kind:function	line:76
 settings.py	../app/models/settings.py	1;"	kind:file	line:1
 test_is_true	../tests/test_weber.py	/^    def test_is_true(self):$/;"	kind:member	line:6
 test_recipe.py	../tests/test_recipe.py	1;"	kind:file	line:1
 test_weber.py	../tests/test_weber.py	1;"	kind:file	line:1
-toggleRelay	../app/weber.py	/^def toggleRelay(name, state):$/;"	kind:function	line:107
 unittest	../tests/test_weber.py	/^import unittest$/;"	kind:namespace	line:1
 url_for	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 variable_end_string	../app/weber.py	/^    variable_end_string='))',$/;"	kind:variable	line:17
