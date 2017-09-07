@@ -78,6 +78,40 @@ def controller():
     pid = con.pid_status()
     return render_template("controller.html", relays=relays, pid=pid)
 
+# r/badcode
+def toggleRelay(name, state):
+    if name == "hlt":
+        if state == "True":
+            con.hlt(1)
+        else:
+            con.hlt(0)
+
+    if name == "pump":
+        if state == "True":
+            con.pump(0)
+        else:
+            con.pump(1)
+
+    # TODO: Maybe invert this?
+    if name == "rimsToMash":
+        if state == "True":
+            con.rims_to("boil")
+        else:
+            con.rims_to("mash")
+
+    if name == "hltToMash":
+        if state == "True":
+            con.hlt_to("boil")
+        else:
+            con.hlt_to("mash")
+
+    return True
+
+@app.route("/toggleRelay", methods=["POST"])
+def handleToggleRelayPost():
+    toggleRelay(request.get_json()['relayName'], request.get_json()['status'])
+    return "True"
+
 @app.route("/create-recipe", methods=['POST'])
 def hand_create_recipe_post():
     if form_missing_field(request.form):
