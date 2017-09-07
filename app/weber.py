@@ -79,9 +79,9 @@ def set_relay():
     relay = request.get_json()
 
     if relay['state']:
-        relay['state'] = 1
-    else:
         relay['state'] = 0
+    else:
+        relay['state'] = 1
 
     if relay['relayName'] == "hlt":
         con.hlt(relay['state'])
