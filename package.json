@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "formBuilder": "^2.5.3"
+    "formBuilder": "^2.5.3",
+    "vue-bulma-tabs": "^1.1.2"
   },
   "scripts": {
     "customInstall": "yarn install --modules-folder ./app/static/node_modules"

@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body id="main">
   <!-- Header Hero -->
   <section id="header" class="hero is-primary">
     <div class="hero-body">
@@ -32,159 +32,163 @@
             <h1 class="title">
               Brewer
             </h1>
-            <h2 class="subtitle">
-              A decent looking interface
-            </h2>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Main Recipe -->
-  <div class="container">
-    <div class="columns">
-      <div id="body" class="column is-10 is-offset-1">
-        <br>
-        <h2 class="subtitle">Select a recipe</h2>
-        <!-- Load Recipe Select Box -->
-        <div class="select">
-          <select v-model="selected">
-            {% if recipes %}
-              {% for recipe in recipes %}
-                <option value="{{ recipe.id }}">{{ recipe.name }}</option>
-              {% endfor %}
-            {% endif %}
-            <option value="create">Create new recipe...</option>
-          </select>
-        </div>
+  <tabs id="tabs">
+    <tab name="Controller" :selected="true">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, beatae! Voluptates inventore consequatur minus tempore magni expedita repellat deleniti officia dolorum quasi reiciendis quidem, id animi, veniam aut? Natus, alias!
+      Here's the controller
+    </tab>
 
-        <!-- Show Selected Recipe -->
-        {% for recipe in recipes %}
-          <div class="box" id="recipe" v-if="selected == {{ recipe.id }}">
-            <h1 class="title">{{ recipe.name }}</h1>
-            <div class="columns">
-              <div class="column">
-                <ul>
-                  <li>Water: {{ recipe.water }}</li>
-                  <li>Grain: {{ recipe.grain }}</li>
-                  <li>Mash Temperature: {{ recipe.mash_temp }} F</li>
-                  <li>Mash Duration: {{ recipe.mash_time }} minutes</li>
-                </ul>
+    <tab name="Recipes and Procedures">
+      <!-- Main Recipe -->
+      <div class="container">
+        <div class="columns">
+          <div id="body" class="column is-10 is-offset-1">
+            <br>
+            <h2 class="subtitle">Select a recipe</h2>
+            <!-- Load Recipe Select Box -->
+            <div class="select">
+              <select v-model="selected">
+              {% if recipes %}
+                {% for recipe in recipes %}
+                  <option value="{{ recipe.id }}">{{ recipe.name }}</option>
+                {% endfor %}
+              {% endif %}
+              <option value="create">Create new recipe...</option>
+            </select>
+            </div>
+
+            <!-- Show Selected Recipe -->
+            {% for recipe in recipes %}
+            <div class="box" id="recipe" v-if="selected == {{ recipe.id }}">
+              <h1 class="title">{{ recipe.name }}</h1>
+              <div class="columns">
+                <div class="column">
+                  <ul>
+                    <li>Water: {{ recipe.water }}</li>
+                    <li>Grain: {{ recipe.grain }}</li>
+                    <li>Mash Temperature: {{ recipe.mash_temp }} F</li>
+                    <li>Mash Duration: {{ recipe.mash_time }} minutes</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  {{ recipe.description }}
+                </div>
               </div>
-              <div class="column">
-                {{ recipe.description }}
-              </div>
+            </div>
+            {% endfor %}
+
+            <!-- Create New Recipe  -->
+            <div id="create-recipe" v-if="selected == 'create'">
+              <h1 class="title">
+                <br> New Recipe
+              </h1>
+              <!-- Create Recipe form -->
+              <form action="/create-recipe" id="create-recipe-form" method="POST">
+                <div class="box">
+                  <!-- Name Field -->
+                  <div class="field">
+                    <label class="label">Recipe name</label>
+                    <div class="control">
+                      <input class="input" name="name" type="text" placeholder="Recipe Name">
+                    </div>
+                  </div>
+
+                  <hr>
+
+                  <!-- Grain Amount Number Field -->
+                  <div class="field">
+                    <label class="label">Grain Amount in Pounds</label>
+                    <div class="control">
+                      <input class="input" name="grain" type="number" placeholder="Grain Amount in Pounds">
+                    </div>
+                  </div>
+
+                  <!-- Water Amount Number Field -->
+                  <div class="field">
+                    <label class="label">Water Amount in Quarts</label>
+                    <div class="control">
+                      <input class="input" name="water" type="number" placeholder="Water Amount in Quarts">
+                    </div>
+                  </div>
+
+                  <!-- Grain Temp Number Field -->
+                  <div class="field">
+                    <label class="label">Grain Temperature</label>
+                    <div class="control">
+                      <input class="input" name="grain_temp" type="number" placeholder="Grain Temperature (f)">
+                    </div>
+                  </div>
+
+                  <!-- Mash Time Number Field -->
+                  <div class="field">
+                    <label class="label">Mash Time</label>
+                    <div class="control">
+                      <input class="input" name="mash_time" type="number" placeholder="Mash Time in Minutes">
+                    </div>
+                  </div>
+
+                  <!-- Mash Temp Number Field -->
+                  <div class="field">
+                    <label class="label">Mash Temperature</label>
+                    <div class="control">
+                      <input class="input" name="mash_temp" type="number" placeholder="Mash Temperature (f)">
+                    </div>
+                  </div>
+
+                  <!-- Description Text Area -->
+                  <div class="field">
+                    <label class="label">Description</label>
+                    <div class="control">
+                      <textarea class="textarea" name="description" placeholder="Description"></textarea>
+                    </div>
+                  </div>
+
+
+                  <!-- Submit -->
+                  <button type="submit" class="button is-primary">
+                  Submit
+                </button>
+
+                </div>
+              </form>
             </div>
           </div>
-        {% endfor %}
-
-        <!-- Create New Recipe  -->
-        <div id="create-recipe" v-if="selected == 'create'">
-          <h1 class="title">
-            <br>
-            New Recipe
-          </h1>
-          <!-- Create Recipe form -->
-          <form action="/create-recipe" id="create-recipe-form" method="POST">
-            <div class="box">
-              <!-- Name Field -->
-              <div class="field">
-                <label class="label">Recipe name</label>
-                <div class="control">
-                  <input class="input" name="name" type="text" placeholder="Recipe Name">
-                </div>
-              </div>
-
-              <hr>
-
-              <!-- Grain Amount Number Field -->
-              <div class="field">
-                <label class="label">Grain Amount in Pounds</label>
-                <div class="control">
-                  <input class="input" name="grain" type="number" placeholder="Grain Amount in Pounds">
-                </div>
-              </div>
-
-              <!-- Water Amount Number Field -->
-              <div class="field">
-                <label class="label">Water Amount in Quarts</label>
-                <div class="control">
-                  <input class="input" name="water" type="number" placeholder="Water Amount in Quarts">
-                </div>
-              </div>
-
-              <!-- Grain Temp Number Field -->
-              <div class="field">
-                <label class="label">Grain Temperature</label>
-                <div class="control">
-                  <input class="input" name="grain_temp" type="number" placeholder="Grain Temperature (f)">
-                </div>
-              </div>
-
-              <!-- Mash Time Number Field -->
-              <div class="field">
-                <label class="label">Mash Time</label>
-                <div class="control">
-                  <input class="input" name="mash_time" type="number" placeholder="Mash Time in Minutes">
-                </div>
-              </div>
-
-              <!-- Mash Temp Number Field -->
-              <div class="field">
-                <label class="label">Mash Temperature</label>
-                <div class="control">
-                  <input class="input" name="mash_temp" type="number" placeholder="Mash Temperature (f)">
-                </div>
-              </div>
-
-              <!-- Description Text Area -->
-              <div class="field">
-                <label class="label">Description</label>
-                <div class="control">
-                  <textarea class="textarea" name="description" placeholder="Description"></textarea>
-                </div>
-              </div>
-
-
-              <!-- Submit -->
-              <button type="submit" class="button is-primary">
-                Submit
-              </button>
-
-            </div>
-          </form>
         </div>
       </div>
-    </div>
-  </div>
 
-  <hr>
+      <hr>
 
-  <!-- Main Procedure -->
-  <div class="container">
-    <div class="columns">
-      <!-- Procedure Builder -->
-      <div class="column is-10 is-offset-1">
-        <div class="box" id="procedure-builder">
-          <form action="/create-procedure" method="post">
+      <!-- Main Procedure -->
+      <div class="container">
+        <div class="columns">
+          <!-- Procedure Builder -->
+          <div class="column is-10 is-offset-1">
+            <div class="box" id="procedure-builder">
+              <form action="/create-procedure" method="post">
 
-            <!-- Name Text Field -->
-            <div class="field">
-              <label class="label">Procedure Name</label>
-              <div class="control">
-                <input class="input" name="name" type="text" placeholder="Procedure Name">
-              </div>
+                <!-- Name Text Field -->
+                <div class="field">
+                  <label class="label">Procedure Name</label>
+                  <div class="control">
+                    <input class="input" name="name" type="text" placeholder="Procedure Name">
+                  </div>
+                </div>
+
+              </form>
             </div>
 
-            <div class="build-wrap"></div>
-
-          </form>
+          </div>
         </div>
-
       </div>
-    </div>
-  </div>
+    </tab>
+  </tabs>
+
 
   <script src="{{ url_for("static", filename="main.js") }}"></script>
   <script src="{{ url_for("static", filename="forms.js") }}"></script>
@@ -194,5 +198,3 @@
 </body>
 
 </html>
-
-

@@ -1,7 +1,30 @@
-* {
-  font-family: 'Raleway';
-}
-
 #recipe {
   margin-top: 2em;
+}
+
+#controller {
+  margin-top: 2em;
+}
+
+#main {
+  margin-top: 2em;
+}
+
+.relay-button {
+  margin-top: 1em;
+  width: 100%
+}
+
+.temperature-display {
+  background-color: #fff;
+  border: 1px solid hsl(217, 71%, 53%);
+  height: 130px;
+  width: 130px;
+  border-width: 7px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }

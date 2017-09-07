@@ -1,0 +1,124 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="(( url_for("static", filename="styles.css") ))">
+  <title>Brewer Controller</title>
+</head>
+
+<body>
+  <!-- Title Hero -->
+  <section class="hero is-info">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Brewer Controller
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+
+  <!-- Controller Section -->
+  <section>
+    <div class="containers">
+      <div class="columns">
+        <div class="column is-8 is-offset-2" id="main">
+          <div class="box">
+            <div id="controller">
+
+              <div class="columns">
+                <!-- Relay Column -->
+                <div class="column is-3">
+                  <div class="has-text-centered">
+                    <h1 class="title">Relays</h1>
+                  </div>
+                  <hr>
+                  <!-- Old button with Vue built in for future reference -->
+                  <!-- <button :class="{ 'button is-primary': selected }">Test</button> -->
+                  (% for relay in relays %)
+                    (% if relay['status'] %)
+                      <a href="#" id="(( relay['name'] ))-button" class="relay-button button is-info">
+                        (( relay['prettyName'] ))
+                      </a>
+                      <br>
+                      (% else %)
+                        <a href="#" id="(( relay['name'] ))-button" class="relay-button button">
+                          (( relay['prettyName'] ))
+                        </a>
+                        <br>
+                      (% endif %)
+                  (% endfor %)
+                  <hr>
+                  (% if pid['is_running'] %)
+                    <a href="#" class="relay-button button is-danger">RIMS</a>
+                  (% else %)
+                    <a href="#" class="relay-button button">RIMS</a>
+                  (% endif %)
+                </div>
+
+                <div class="column is-9">
+                  <div class="has-text-centered">
+                    <h1 class="title">Temperatures</h1>
+                  </div>
+                  <hr>
+                  <div class="columns">
+                    <div class="column is-6">
+                      <!-- Setpoint Value Tile -->
+                      <div class="tile is-parent">
+                        <article class="tile is-child notification is-danger" id="sv-tile">
+                          <div class="content">
+                            <p class="title">Setpoint Value 150 ℉</p>
+                          </div>
+                        </article>
+                      </div>
+                      <!-- Set Setpoint Value Form -->
+                      <form action="#" id="set_sv" method="POST">
+                        <div class="columns">
+                          &nbsp;&nbsp;&nbsp;
+                          <div class="column is-9" id="set-sv-column">
+                            <!-- SV Text field -->
+                            <div class="field">
+                              <div class="control">
+                                <input class="input" pattern="[0-9].+" name="sv" type="text" placeholder="This should be a number">
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Submit button -->
+                          <div class="column is-3">
+                            <button class="button is-info" type="submit">Set</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="column is-6">
+                      <!-- Proccess Value Tile -->
+                      <div class="tile is-parent">
+                        <article class="tile is-child notification is-danger">
+                          <div class="content">
+                            <p class="title">Process Value 150 ℉</p>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- End -->
+</body>
+
+</html>
+<link rel="stylesheet" href="(( url_for("static", filename="main.js") ))">

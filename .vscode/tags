@@ -4,59 +4,61 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-BrewerFrontEndTestCase	../tests/test_brewer_front_end.py	/^class BrewerFrontEndTestCase(unittest.TestCase):$/;"	kind:class	line:4
-Flask	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+Flask	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 Meta	../app/models/procedure.py	/^    class Meta:$/;"	kind:class	line:10
 Meta	../app/models/recipe.py	/^    class Meta:$/;"	kind:class	line:15
 Procedure	../app/models/procedure.py	/^class Procedure(Model):$/;"	kind:class	line:6
-Recipe	../app/brewer_front_end.py	/^from models.recipe import Recipe$/;"	kind:namespace	line:3
 Recipe	../app/models/recipe.py	/^class Recipe(Model):$/;"	kind:class	line:6
+Recipe	../app/weber.py	/^from models.recipe import Recipe$/;"	kind:namespace	line:3
 RecipeTestCase	../tests/test_recipe.py	/^class RecipeTestCase(unittest.TestCase):$/;"	kind:class	line:3
+WeberEndTestCase	../tests/test_weber.py	/^class WeberEndTestCase(unittest.TestCase):$/;"	kind:class	line:4
 __init__.py	../__init__.py	1;"	kind:file	line:1
 __init__.py	../app/__init__.py	1;"	kind:file	line:1
 __init__.py	../app/models/__init__.py	1;"	kind:file	line:1
 __init__.py	../tests/__init__.py	1;"	kind:file	line:1
-_db_close	../app/brewer_front_end.py	/^def _db_close(exc):$/;"	kind:function	line:21
-_db_connect	../app/brewer_front_end.py	/^def _db_connect():$/;"	kind:function	line:16
-app	../app/brewer_front_end.py	/^app = Flask(__name__)$/;"	kind:variable	line:9
-brewer_front_end	../tests/test_brewer_front_end.py	/^from app import brewer_front_end$/;"	kind:namespace	line:2
-brewer_front_end.py	../app/brewer_front_end.py	1;"	kind:file	line:1
+_db_close	../app/weber.py	/^def _db_close(exc):$/;"	kind:function	line:21
+_db_connect	../app/weber.py	/^def _db_connect():$/;"	kind:function	line:16
+accept_post	../app/weber.py	/^def accept_post():$/;"	kind:function	line:63
+app	../app/weber.py	/^app = Flask(__name__)$/;"	kind:variable	line:9
+controller	../app/weber.py	/^def controller():$/;"	kind:function	line:41
 database	../app/models/procedure.py	/^        database = db$/;"	kind:variable	line:11
 database	../app/models/recipe.py	/^        database = db$/;"	kind:variable	line:16
-dated_url_for	../app/brewer_front_end.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:65
-db	../app/brewer_front_end.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:10
+dated_url_for	../app/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:73
 db	../app/models/procedure.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
 db	../app/models/recipe.py	/^db = SqliteDatabase(db_file)$/;"	kind:variable	line:4
+db	../app/weber.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:10
 db_file	../app/models/procedure.py	/^from settings import db_file$/;"	kind:namespace	line:2
 db_file	../app/models/recipe.py	/^from settings import db_file$/;"	kind:namespace	line:2
 db_file	../app/models/settings.py	/^db_file = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:3
-db_path	../app/brewer_front_end.py	/^db_path = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:7
+db_path	../app/weber.py	/^db_path = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:7
 description	../app/models/recipe.py	/^    description = CharField()$/;"	kind:variable	line:13
-form_missing_field	../app/brewer_front_end.py	/^def form_missing_field(form):$/;"	kind:function	line:26
+form_missing_field	../app/weber.py	/^def form_missing_field(form):$/;"	kind:function	line:26
 grain	../app/models/recipe.py	/^    grain       = FloatField()$/;"	kind:variable	line:8
 grain_temp	../app/models/recipe.py	/^    grain_temp  = FloatField()$/;"	kind:variable	line:9
-hand_create_recipe_post	../app/brewer_front_end.py	/^def hand_create_recipe_post():$/;"	kind:function	line:42
-index	../app/brewer_front_end.py	/^def index():$/;"	kind:function	line:36
-json	../app/brewer_front_end.py	/^import json$/;"	kind:namespace	line:4
+hand_create_recipe_post	../app/weber.py	/^def hand_create_recipe_post():$/;"	kind:function	line:45
+index	../app/weber.py	/^def index():$/;"	kind:function	line:36
+json	../app/weber.py	/^import json$/;"	kind:namespace	line:4
 mash_temp	../app/models/recipe.py	/^    mash_temp   = FloatField()$/;"	kind:variable	line:11
 mash_time	../app/models/recipe.py	/^    mash_time   = FloatField()$/;"	kind:variable	line:12
 name	../app/models/procedure.py	/^    name = CharField()$/;"	kind:variable	line:7
 name	../app/models/recipe.py	/^    name        = CharField()$/;"	kind:variable	line:7
-os	../app/brewer_front_end.py	/^import os$/;"	kind:namespace	line:5
 os	../app/models/settings.py	/^import os$/;"	kind:namespace	line:1
-override_url_for	../app/brewer_front_end.py	/^def override_url_for():$/;"	kind:function	line:61
+os	../app/weber.py	/^import os$/;"	kind:namespace	line:5
+override_url_for	../app/weber.py	/^def override_url_for():$/;"	kind:function	line:69
 procedure.py	../app/models/procedure.py	1;"	kind:file	line:1
 recipe	../tests/test_recipe.py	/^from app.models import recipe$/;"	kind:namespace	line:1
 recipe.py	../app/models/recipe.py	1;"	kind:file	line:1
-redirect	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-render_template	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-request	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-session	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+redirect	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+render_template	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+request	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+session	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 setUp	../tests/test_recipe.py	/^    def setUp(self):$/;"	kind:member	line:4
 settings.py	../app/models/settings.py	1;"	kind:file	line:1
-test_brewer_front_end.py	../tests/test_brewer_front_end.py	1;"	kind:file	line:1
-test_is_true	../tests/test_brewer_front_end.py	/^    def test_is_true(self):$/;"	kind:member	line:6
+test_is_true	../tests/test_weber.py	/^    def test_is_true(self):$/;"	kind:member	line:6
 test_recipe.py	../tests/test_recipe.py	1;"	kind:file	line:1
-unittest	../tests/test_brewer_front_end.py	/^import unittest$/;"	kind:namespace	line:1
-url_for	../app/brewer_front_end.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+test_weber.py	../tests/test_weber.py	1;"	kind:file	line:1
+unittest	../tests/test_weber.py	/^import unittest$/;"	kind:namespace	line:1
+url_for	../app/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 water	../app/models/recipe.py	/^    water       = FloatField()$/;"	kind:variable	line:10
+weber	../tests/test_weber.py	/^from app import weber$/;"	kind:namespace	line:2
+weber.py	../app/weber.py	1;"	kind:file	line:1

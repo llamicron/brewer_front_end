@@ -6,7 +6,18 @@ import os
 
 db_path = os.path.expanduser("~") + "/.brewer.db"
 
-app = Flask(__name__)
+class CustomFlask(Flask):
+  jinja_options = Flask.jinja_options.copy()
+  jinja_options.update(dict(
+    block_start_string='(%',
+    block_end_string='%)',
+    variable_start_string='((',
+    variable_end_string='))',
+    comment_start_string='(#',
+    comment_end_string='#)',
+  ))
+
+app = CustomFlask(__name__)
 db = SqliteDatabase(db_path)
 
 app.secret_key = "9aD@nZ6-N9e$NZ[32\oXs4_H42"
@@ -37,6 +48,37 @@ def index():
     recipes = Recipe.select()
     return render_template("index.html", recipes=recipes)
 
+@app.route("/controller")
+def controller():
+    relays = [
+        {
+            "name": "hlt",
+            "prettyName": "HLT",
+            "status": True
+        },
+        {
+            "name": "hltToMash",
+            "prettyName": "HLT To Mash",
+            "status": False
+        },
+        {
+            "name": "rimsToMash",
+            "prettyName": "RIMS To Mash",
+            "status": False
+        },
+        {
+            "name": "pump",
+            "prettyName": "Pump",
+            "status": True
+        }
+    ]
+
+    pid = {
+        "is_running": True,
+        "sv_temp": 140.5,
+        "pv_temp": 130.8
+    }
+    return render_template("controller.html", relays=relays, pid=pid)
 
 @app.route("/create-recipe", methods=['POST'])
 def hand_create_recipe_post():
@@ -55,6 +97,11 @@ def hand_create_recipe_post():
     )
     recipe.save()
     return redirect("/")
+
+@app.route('/post', methods=["POST"])
+def accept_post():
+    print(request.form)
+    return render_template("controller.html")
 
 
 @app.context_processor
