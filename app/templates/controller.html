@@ -71,7 +71,7 @@
                       <div class="tile is-parent">
                         <article class="tile is-child notification is-danger" id="sv-tile">
                           <div class="content">
-                            <p class="title">Setpoint Value 150 ℉</p>
+                            <p class="title">Setpoint Value (( pid["sv"] )) ℉</p>
                           </div>
                         </article>
                       </div>
@@ -83,7 +83,7 @@
                             <!-- SV Text field -->
                             <div class="field">
                               <div class="control">
-                                <input class="input" pattern="[0-9].+" name="sv" type="text" placeholder="This should be a number">
+                                <input class="input" pattern="[0-9].+" name="sv" value="(( pid['sv'] ))" type="text" placeholder="This should be a number">
                               </div>
                             </div>
                           </div>
@@ -101,7 +101,7 @@
                       <div class="tile is-parent">
                         <article class="tile is-child notification is-danger">
                           <div class="content">
-                            <p class="title">Process Value 150 ℉</p>
+                            <p class="title">Process Value (( pid['pv'] )) ℉</p>
                           </div>
                         </article>
                       </div>

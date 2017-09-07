@@ -2,9 +2,11 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from peewee import *
 from models.recipe import Recipe
 import json
+from brewer.controller import Controller
 import os
 
 db_path = os.path.expanduser("~") + "/.brewer.db"
+con = Controller()
 
 class CustomFlask(Flask):
   jinja_options = Flask.jinja_options.copy()
@@ -54,30 +56,26 @@ def controller():
         {
             "name": "hlt",
             "prettyName": "HLT",
-            "status": True
+            "status": con.relay_status(con.settings.relays["hlt"])
         },
         {
             "name": "hltToMash",
             "prettyName": "HLT To Mash",
-            "status": False
+            "status": con.relay_status(con.settings.relays['hltToMash'])
         },
         {
             "name": "rimsToMash",
             "prettyName": "RIMS To Mash",
-            "status": False
+            "status": con.relay_status(con.settings.relays["rimsToMash"])
         },
         {
             "name": "pump",
             "prettyName": "Pump",
-            "status": True
+            "status": con.relay_status(con.settings.relays["pump"])
         }
     ]
 
-    pid = {
-        "is_running": True,
-        "sv_temp": 140.5,
-        "pv_temp": 130.8
-    }
+    pid = con.pid_status()
     return render_template("controller.html", relays=relays, pid=pid)
 
 @app.route("/create-recipe", methods=['POST'])
