@@ -24,6 +24,18 @@ var controller = new Vue({
         .catch(function (error) {
           console.log(error);
         });
+    },
+
+    allRelaysOff() {
+      axios.post("/allRelaysOff", {
+        "allRelaysOff": true
+      })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   },
 
@@ -32,7 +44,7 @@ var controller = new Vue({
 
     setInterval(function () {
       this.loadData();
-    }.bind(this), 10000);
+    }.bind(this), 800);
   },
 
 })

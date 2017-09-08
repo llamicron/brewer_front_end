@@ -41,10 +41,12 @@
 
                 <!-- Relay Buttons -->
                 <!-- Setting to name to the status becuase i can't get the value from Vue -->
-                <a class="button relay-button" :id="relay['name']" :name="relay['status']" v-for="relay in relays" @click="setRelay" :class="{ 'is-info': relay['status'] }" >{{ relay['prettyName'] }}</a>
-
+                <a class="button relay-button" :id="relay['name']" :name="relay['status']" v-for="relay in relays" @click="setRelay" :class="{ 'is-primary': relay['status'], 'is-danger': !relay['status'] }" >{{ relay['prettyName'] }}</a>
+                <br />
+                <br />
+                <a href="#" @click="allRelaysOff" class="button relay-button is-warning">All off</a>
                 <hr>
-                <a href="#" :class="{ 'is-danger': pid['pid_running'] }" class="relay-button button">RIMS</a>
+                <a href="#" :class="{ 'is-primary': pid['pid_running'] }" class="relay-button button is-danger">RIMS</a>
               </div>
 
               <div class="column is-9">
@@ -56,7 +58,7 @@
                   <div class="column is-6">
                     <!-- Setpoint Value Tile -->
                     <div class="tile is-parent">
-                      <article class="tile is-child notification is-danger" id="sv-tile">
+                      <article class="tile is-child notification is-info" id="sv-tile">
                         <div class="content">
                           <p class="title">Setpoint Value {{ pid['sv'] }} ℉</p>
                         </div>
@@ -86,7 +88,7 @@
                   <div class="column is-6">
                     <!-- Proccess Value Tile -->
                     <div class="tile is-parent">
-                      <article class="tile is-child notification is-danger">
+                      <article class="tile is-child notification is-info">
                         <div class="content">
                           <p class="title">Process Value {{ pid['pv'] }} ℉</p>
                         </div>

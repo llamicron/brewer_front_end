@@ -104,10 +104,17 @@ def set_relay():
 
     return "True"
 
+@app.route("/allRelaysOff", methods=["POST"])
+def all_relays_off():
+    con.hlt(0)
+    con.pump(0)
+    con.hlt_to("boil")
+    con.rims_to("boil")
+    return "True"
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)
-
 
 def dated_url_for(endpoint, **values):
     if endpoint == 'static':
