@@ -3,8 +3,9 @@ from version import VERSION
 
 setup(
     name='llamicron_weber',
-    packages=['app'],
+    packages=['weber'],
     py_modules=["version"],
+    scripts=["weber/run.py"],
     version=VERSION,
     description='A web interface for llamicron/brewer',
     author='Luke Sweeney',

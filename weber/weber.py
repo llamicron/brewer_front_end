@@ -1,11 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from peewee import *
-from models.recipe import Recipe
 import json
 from brewer.controller import Controller
 import os
 
-db_path = os.path.expanduser("~") + "/.brewer.db"
 con = Controller()
 
 class CustomFlask(Flask):
@@ -20,58 +17,22 @@ class CustomFlask(Flask):
   ))
 
 app = CustomFlask(__name__)
-db = SqliteDatabase(db_path)
 
 app.secret_key = "9aD@nZ6-N9e$NZ[32\oXs4_H42"
 
 
-@app.before_request
-def _db_connect():
-    db.connect()
-
-
-@app.teardown_request
-def _db_close(exc):
-    if not db.is_closed():
-        db.close()
-
-
-def form_missing_field(form):
-    for field, value in form.iteritems():
-        if value == "":
-            return True
-    return False
 
 
 # Routes ---------------------------------------------------
 
 @app.route("/")
 def index():
-    recipes = Recipe.select()
-    return render_template("index.html", recipes=recipes)
+    return render_template("index.html")
 
 @app.route("/controller")
 def controller():
     return render_template("controller.html")
 
-
-@app.route("/create-recipe", methods=['POST'])
-def hand_create_recipe_post():
-    if form_missing_field(request.form):
-        # TODO: Set error message
-        return redirect("/")
-    # Store recipe
-    recipe = Recipe.create(
-        name=request.form['name'],
-        grain=request.form['grain'],
-        grain_temp=request.form['grain_temp'],
-        water=request.form['water'],
-        mash_temp=request.form['mash_temp'],
-        mash_time=request.form['mash_time'],
-        description=request.form['description']
-    )
-    recipe.save()
-    return redirect("/")
 
 # r/badcode
 @app.route("/setRelay", methods=["POST"])
@@ -127,6 +88,7 @@ def dated_url_for(endpoint, **values):
 
 
 # API ------------------------------------------------------
+
 # Relay API Resource
 @app.route("/relays", methods=["GET"])
 def relays():
@@ -163,5 +125,4 @@ def pid():
 
 
 if __name__ == '__main__':
-    Recipe.create_table(True)
     app.run('0.0.0.0', 8000, extra_files="static/main.js")
