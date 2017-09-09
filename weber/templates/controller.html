@@ -65,24 +65,23 @@
                       </article>
                     </div>
                     <!-- Set Setpoint Value Form -->
-                    <form action="#" id="set_sv" method="POST">
+
                       <div class="columns">
                         &nbsp;&nbsp;&nbsp;
                         <div class="column is-9" id="set-sv-column">
                           <!-- SV Text field -->
                           <div class="field">
                             <div class="control">
-                              <input class="input" pattern="[0-9].+" name="sv" type="text" placeholder="This should be a number">
+                              <input class="input" v-model="sv" pattern="[0-9].+" name="sv" type="text" placeholder="This should be a number">
                             </div>
                           </div>
                         </div>
 
                         <!-- Submit button -->
                         <div class="column is-3">
-                          <button class="button is-info" type="submit">Set</button>
+                          <a href="#" @click="setSv" class="button is-info">Set</a>
                         </div>
                       </div>
-                    </form>
                   </div>
 
                   <div class="column is-6">

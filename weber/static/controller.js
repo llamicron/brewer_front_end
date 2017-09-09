@@ -3,7 +3,8 @@ var controller = new Vue({
 
   data: {
     relays: [],
-    pid: []
+    pid: [],
+    sv: ''
   },
 
   methods: {
@@ -48,6 +49,23 @@ var controller = new Vue({
         .catch(function (error) {
           console.log(error)
         })
+    },
+
+    setSv() {
+      if (this.sv > 999.9) {
+        alert("Setpoint value must be less than 999.9")
+      } else {
+        axios.post("/setSv", {
+          sv: this.sv
+        })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      }
+      this.sv = ''
     }
   },
 

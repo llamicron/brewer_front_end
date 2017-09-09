@@ -82,6 +82,12 @@ def toggle_rims():
         con.pid(1)
     return "True"
 
+@app.route("/setSv", methods=["POST"])
+def set_sv():
+    sv = request.get_json()['sv']
+    con.set_sv(float(sv))
+    return "True"
+
 
 @app.context_processor
 def override_url_for():
