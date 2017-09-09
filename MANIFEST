@@ -2,5 +2,4 @@
 setup.py
 version.py
 weber/__init__.py
-weber/run.py
 weber/weber.py

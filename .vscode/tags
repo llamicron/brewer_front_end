@@ -4,64 +4,58 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Controller	../weber/weber.py	/^from brewer.controller import Controller$/;"	kind:namespace	line:5
-CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:11
+Controller	../weber/weber.py	/^from brewer.brewer.controller import Controller$/;"	kind:namespace	line:3
+CustomFlask	../weber/weber.py	/^class CustomFlask(Flask):$/;"	kind:class	line:8
 Flask	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-Recipe	../weber/weber.py	/^from models.recipe import Recipe$/;"	kind:namespace	line:3
 VERSION	../setup.py	/^from version import VERSION$/;"	kind:namespace	line:2
-VERSION	../version.py	/^VERSION="0.1.3"$/;"	kind:variable	line:1
+VERSION	../version.py	/^VERSION="0.1.5"$/;"	kind:variable	line:1
 WeberTestCase	../tests/test_weber.py	/^class WeberTestCase(unittest.TestCase):$/;"	kind:class	line:4
 __init__.py	../__init__.py	1;"	kind:file	line:1
 __init__.py	../tests/__init__.py	1;"	kind:file	line:1
 __init__.py	../weber/__init__.py	1;"	kind:file	line:1
-_db_close	../weber/weber.py	/^def _db_close(exc):$/;"	kind:function	line:34
-_db_connect	../weber/weber.py	/^def _db_connect():$/;"	kind:function	line:29
-all_relays_off	../weber/weber.py	/^def all_relays_off():$/;"	kind:function	line:108
-app	../weber/weber.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:22
-author	../setup.py	/^    author='Luke Sweeney',$/;"	kind:variable	line:10
-author_email	../setup.py	/^    author_email='luke@thesweeneys.org',$/;"	kind:variable	line:11
-block_end_string	../weber/weber.py	/^    block_end_string='%)',$/;"	kind:variable	line:15
-block_start_string	../weber/weber.py	/^    block_start_string='(%',$/;"	kind:variable	line:14
-classifiers	../setup.py	/^    classifiers=[],$/;"	kind:variable	line:15
-comment_end_string	../weber/weber.py	/^    comment_end_string='#)',$/;"	kind:variable	line:19
-comment_start_string	../weber/weber.py	/^    comment_start_string='(#',$/;"	kind:variable	line:18
-con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:9
-controller	../weber/weber.py	/^def controller():$/;"	kind:function	line:54
-dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:119
-db	../weber/weber.py	/^db = SqliteDatabase(db_path)$/;"	kind:variable	line:23
-db_path	../weber/weber.py	/^db_path = os.path.expanduser("~") + "\/.brewer.db"$/;"	kind:variable	line:8
-description	../setup.py	/^    description='A web interface for llamicron\/brewer',$/;"	kind:variable	line:9
-download_url	../setup.py	/^    download_url="https:\/\/github.com\/llamicron\/weber\/archive\/%s.tar.gz" % VERSION,$/;"	kind:variable	line:13
-form_missing_field	../weber/weber.py	/^def form_missing_field(form):$/;"	kind:function	line:39
-hand_create_recipe_post	../weber/weber.py	/^def hand_create_recipe_post():$/;"	kind:function	line:59
-index	../weber/weber.py	/^def index():$/;"	kind:function	line:49
-jinja_options	../weber/weber.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:12
-json	../weber/weber.py	/^import json$/;"	kind:namespace	line:4
-keywords	../setup.py	/^    keywords=['beer', 'python', 'brewing', 'web', 'Flask', 'Vue.js'],$/;"	kind:variable	line:14
+all_relays_off	../weber/weber.py	/^def all_relays_off():$/;"	kind:function	line:69
+app	../weber/weber.py	/^app = CustomFlask(__name__)$/;"	kind:variable	line:19
+author	../setup.py	/^    author='Luke Sweeney',$/;"	kind:variable	line:11
+author_email	../setup.py	/^    author_email='luke@thesweeneys.org',$/;"	kind:variable	line:12
+block_end_string	../weber/weber.py	/^    block_end_string='%)',$/;"	kind:variable	line:12
+block_start_string	../weber/weber.py	/^    block_start_string='(%',$/;"	kind:variable	line:11
+classifiers	../setup.py	/^    classifiers=[],$/;"	kind:variable	line:16
+comment_end_string	../weber/weber.py	/^    comment_end_string='#)',$/;"	kind:variable	line:16
+comment_start_string	../weber/weber.py	/^    comment_start_string='(#',$/;"	kind:variable	line:15
+con	../weber/weber.py	/^con = Controller()$/;"	kind:variable	line:6
+controller	../weber/weber.py	/^def controller():$/;"	kind:function	line:33
+dated_url_for	../weber/weber.py	/^def dated_url_for(endpoint, **values):$/;"	kind:function	line:80
+description	../setup.py	/^    description='A web interface for llamicron\/brewer',$/;"	kind:variable	line:10
+download_url	../setup.py	/^    download_url="https:\/\/github.com\/llamicron\/weber\/archive\/%s.tar.gz" % VERSION,$/;"	kind:variable	line:14
+index	../weber/weber.py	/^def index():$/;"	kind:function	line:29
+jinja_options	../weber/weber.py	/^  jinja_options = Flask.jinja_options.copy()$/;"	kind:variable	line:9
+json	../weber/weber.py	/^import json$/;"	kind:namespace	line:2
+keywords	../setup.py	/^    keywords=['beer', 'python', 'brewing', 'web', 'Flask', 'Vue.js'],$/;"	kind:variable	line:15
 name	../setup.py	/^    name='llamicron_weber',$/;"	kind:variable	line:5
-os	../weber/weber.py	/^import os$/;"	kind:namespace	line:6
-override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:116
+os	../weber/weber.py	/^import os$/;"	kind:namespace	line:4
+override_url_for	../weber/weber.py	/^def override_url_for():$/;"	kind:function	line:77
 packages	../setup.py	/^    packages=['weber'],$/;"	kind:variable	line:6
-pid	../weber/weber.py	/^def pid():$/;"	kind:function	line:160
+pid	../weber/weber.py	/^def pid():$/;"	kind:function	line:122
 py_modules	../setup.py	/^    py_modules=["version"],$/;"	kind:variable	line:7
 redirect	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-relays	../weber/weber.py	/^def relays():$/;"	kind:function	line:132
+relays	../weber/weber.py	/^def relays():$/;"	kind:function	line:94
 render_template	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 request	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
+scripts	../setup.py	/^    scripts=["weber\/run.py"],$/;"	kind:variable	line:8
 session	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
 setUp	../tests/test_weber.py	/^    def setUp(self):$/;"	kind:member	line:5
-set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:78
+set_relay	../weber/weber.py	/^def set_relay():$/;"	kind:function	line:39
 setup	../setup.py	/^from distutils.core import setup$/;"	kind:namespace	line:1
 setup.py	../setup.py	1;"	kind:file	line:1
 test_app	../tests/test_weber.py	/^    def test_app(self):$/;"	kind:member	line:8
 test_controller_page_load	../tests/test_weber.py	/^    def test_controller_page_load(self):$/;"	kind:member	line:11
 test_weber.py	../tests/test_weber.py	1;"	kind:file	line:1
 unittest	../tests/test_weber.py	/^import unittest$/;"	kind:namespace	line:1
-url	../setup.py	/^    url='https:\/\/github.com\/llamicron\/weber',$/;"	kind:variable	line:12
+url	../setup.py	/^    url='https:\/\/github.com\/llamicron\/weber',$/;"	kind:variable	line:13
 url_for	../weber/weber.py	/^from flask import Flask, render_template, request, redirect, url_for, session$/;"	kind:namespace	line:1
-variable_end_string	../weber/weber.py	/^    variable_end_string='))',$/;"	kind:variable	line:17
-variable_start_string	../weber/weber.py	/^    variable_start_string='((',$/;"	kind:variable	line:16
-version	../setup.py	/^    version=VERSION,$/;"	kind:variable	line:8
+variable_end_string	../weber/weber.py	/^    variable_end_string='))',$/;"	kind:variable	line:14
+variable_start_string	../weber/weber.py	/^    variable_start_string='((',$/;"	kind:variable	line:13
+version	../setup.py	/^    version=VERSION,$/;"	kind:variable	line:9
 version.py	../version.py	1;"	kind:file	line:1
 weber	../tests/test_weber.py	/^from ..app import weber$/;"	kind:namespace	line:2
 weber.py	../weber/weber.py	1;"	kind:file	line:1

@@ -36,6 +36,18 @@ var controller = new Vue({
         .catch(function (error) {
           console.log(error)
         })
+    },
+
+    toggleRims() {
+      axios.post("/toggleRims", {
+        "state": this.pid['pid_running']
+      })
+        .then(function (response) {
+          console.log(response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
   },
 

@@ -73,6 +73,16 @@ def all_relays_off():
     con.rims_to("boil")
     return "True"
 
+@app.route("/toggleRims", methods=["POST"])
+def toggle_rims():
+    rims = request.get_json()
+    if rims['state']:
+        con.pid(0)
+    else:
+        con.pid(1)
+    return "True"
+
+
 @app.context_processor
 def override_url_for():
     return dict(url_for=dated_url_for)

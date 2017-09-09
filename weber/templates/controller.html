@@ -46,7 +46,7 @@
                 <br />
                 <a href="#" @click="allRelaysOff" class="button relay-button is-warning">All off</a>
                 <hr>
-                <a href="#" :class="{ 'is-primary': pid['pid_running'] }" class="relay-button button is-danger">RIMS</a>
+                <a href="#" @click="toggleRims" :class="{ 'is-danger': pid['pid_running'], 'is-primary': !pid['pid_running'] }" class="relay-button button">RIMS</a>
               </div>
 
               <div class="column is-9">
