@@ -44,7 +44,9 @@
                 <a class="button relay-button" :id="relay['name']" :name="relay['status']" v-for="relay in relays" @click="setRelay" :class="{ 'is-primary': relay['status'], 'is-danger': !relay['status'] }" >{{ relay['prettyName'] }}</a>
                 <br />
                 <br />
+
                 <a href="#" @click="allRelaysOff" class="button relay-button is-warning">All off</a>
+
                 <hr>
                 <a href="#" @click="toggleRims" :class="{ 'is-danger': pid['pid_running'], 'is-primary': !pid['pid_running'] }" class="relay-button button">RIMS</a>
               </div>

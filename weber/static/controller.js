@@ -15,9 +15,15 @@ var controller = new Vue({
 
     setRelay() {
       // State is set to name field since js is retarded
+      relayName = event.srcElement.id
+      this.relays.forEach(function(relay) {
+        if (relay.name == relayName) {
+          relayToSend = relay
+        }
+      }, this);
       axios.post('/setRelay', {
-        relayName: event.srcElement.id,
-        state: event.srcElement.name
+        relayName: relayToSend['name'],
+        state: relayToSend['status']
       })
         .then(function (response) {
           console.log(response);
@@ -66,7 +72,16 @@ var controller = new Vue({
         })
       }
       this.sv = ''
-    }
+    },
+
+    // anyRelayOn() {
+    //   this.relays.forEach(function (relay) {
+    //     if (relay.status) {
+    //       return true;
+    //     }
+    //   }, this);
+    //   return false;
+    // }
   },
 
   mounted() {
